@@ -1,13 +1,37 @@
-<div class="flex flex-col item-center justify-center h-full">
+@if(chatService.currentOpenedChat())
+{
+    <div class="relative w-full bg=[#dfe7f1] h-full">
+           <div class="chat-header flex justify-between item-center border-b w-full bg-white p-4 ">
+           <div>
+           <span>
+                {{chatService.currentOpenedChat()?.fullName | titlecase}}
+            </span>
+            <br/>
+            <span>
+               {{chatService.currentOpenedChat()?.userName}}
+
+            </span>
+           </div>
+           </div>
+
+           <div>
+                <mat-icon class="cursor-pointer hover:text-red-500">
+                  video_call
+                </mat-icon>
+           </div>
+    </div>
+
+    <div>
+        test
+    </div>
+
+    <div class="absolute flex items-center bottom-0 border-t w-full bg-white p-4">
+         
+    </div>
+}
+@else
+{
+  <div class="flex flex-col item-center justify-center p-4 h-full">
      <img src="chatopen.svg" alt="">
 </div>
-
-<!-- <div class="relative w-full bg-[#dfe7f1] h-full">
-    <div class="chat-header flex justify-between item-center border-b w-full bg-white p-4 ">
-        <div>
-            <span class="font-bold leading-normal ">
-              Hamza Ahmed
-            </span>
-        </div>
-    </div>
-</div> -->
+}

@@ -5,6 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
+import { ChatService } from '../../services/chat/chat.service';
 
 @Component({
   selector: 'app-chat-sidebar',
@@ -17,9 +18,15 @@ export class ChatSidebarComponent {
 
   authService=inject(AuthService);
   router=inject(Router);
+  chatService=inject(ChatService);
   logout()
   {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+ngOnInit(): void {
+  this.chatService.startConnection(this.authService.getAccessToken()!);
+}
+
 }
