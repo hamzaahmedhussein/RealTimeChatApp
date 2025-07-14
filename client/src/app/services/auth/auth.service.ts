@@ -76,7 +76,6 @@ export class AuthService {
   {
     localStorage.removeItem(this.token)
     localStorage.removeItem('user');
-
   }
 
   get currentLoggedUser () : User | null

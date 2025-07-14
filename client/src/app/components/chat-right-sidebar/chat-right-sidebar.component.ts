@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ChatService } from '../../services/chat/chat.service';
 
 @Component({
   selector: 'app-chat-right-sidebar',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './chat-right-sidebar.component.css'
 })
 export class ChatRightSidebarComponent {
-
+chatService=inject(ChatService);
 }

@@ -6,11 +6,13 @@ import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 import { ChatService } from '../../services/chat/chat.service';
+import { User } from '../../models/user';
+import { TypingIndicatorComponent } from "../typing-indicator/typing-indicator.component";
 
 @Component({
   selector: 'app-chat-sidebar',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatMenuModule,TitleCasePipe],
+  imports: [MatButtonModule, MatIconModule,TypingIndicatorComponent,MatMenuModule, TitleCasePipe, TypingIndicatorComponent],
   templateUrl: './chat-sidebar.component.html',
   styleUrls: ['./chat-sidebar.component.css']
 })
@@ -27,6 +29,12 @@ export class ChatSidebarComponent {
 
 ngOnInit(): void {
   this.chatService.startConnection(this.authService.getAccessToken()!);
+}
+
+openChatWindow(user:User)
+{
+  this.chatService.currentOpenedChat.set(user);
+  this.chatService.loadMessages(1);
 }
 
 }
